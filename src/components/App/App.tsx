@@ -6,11 +6,13 @@ import { Provider } from "react-redux";
 import store from "../../store";
 
 // components
-import First from "../First/First";
+import List from "../List/List";
+import Home from "../Home/Home";
+import Create from "../Create/Create";
 
 const MainRoutes = () => (
   <React.Fragment>
-    <First />
+    <Home />
   </React.Fragment>
 );
 
@@ -21,8 +23,10 @@ class App extends React.Component {
         <Router>
           <Switch>
             <Route exact={true} path="/" component={MainRoutes} />
+            <Route exact={true} path="/create" component={Create} />
           </Switch>
         </Router>
+        <List />
       </Provider>
     );
   }
