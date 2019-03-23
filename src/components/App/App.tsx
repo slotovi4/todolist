@@ -8,7 +8,7 @@ import store from "../../store";
 // components
 import List from "../List/List";
 import Home from "../Home/Home";
-import Create from "../Create/Create";
+import { Create } from "../containers";
 
 const MainRoutes = () => (
   <React.Fragment>
