@@ -1,10 +1,10 @@
 import * as React from "react";
 
 interface IProps {
-  createTodo: (todo: any) => void;
+  sendTodo: (todo: any) => void;
 }
 
-class CreateTodo extends React.Component<IProps> {
+class TodoForm extends React.Component<IProps> {
   private formRef = React.createRef<HTMLFormElement>();
 
   public render() {
@@ -30,14 +30,13 @@ class CreateTodo extends React.Component<IProps> {
 
     if (form) {
       const data = new FormData(form);
-
       const title = data.get("todo_title");
       const text = data.get("todo_text");
       const importance = data.get("todo_importance");
 
-      this.props.createTodo({ title, text, importance });
+      this.props.sendTodo({ title, text, importance });
     }
   };
 }
 
-export default CreateTodo;
+export default TodoForm;

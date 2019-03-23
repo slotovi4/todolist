@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import { createTodo } from "../actions/createActions";
 
 // components
-import CreateTodo from "./CreateTodo/CreateTodo";
+import TodoForm from "./TodoForm/TodoForm";
 
 export const Create = connect(
   null,
   { createTodo }
-)(CreateTodo);
+)(TodoForm);
