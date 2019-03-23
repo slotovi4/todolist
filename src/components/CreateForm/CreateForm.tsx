@@ -1,9 +1,11 @@
 import * as React from "react";
 import * as uuid from "uuid";
 import { ITodo } from "../../actions/interface";
+import { History } from "history";
 
 interface IProps {
   createTodo: (todo: ITodo) => void;
+  history: History;
 }
 
 class CreateForm extends React.Component<IProps> {
@@ -38,6 +40,7 @@ class CreateForm extends React.Component<IProps> {
       const id = uuid();
 
       this.props.createTodo({ title, text, importance, id });
+      this.props.history.push("/");
     }
   };
 }
