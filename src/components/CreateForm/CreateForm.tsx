@@ -1,10 +1,12 @@
 import * as React from "react";
+import * as uuid from "uuid";
+import { ITodo } from "../../actions/interface";
 
 interface IProps {
-  sendTodo: (todo: any) => void;
+  createTodo: (todo: ITodo) => void;
 }
 
-class TodoForm extends React.Component<IProps> {
+class CreateForm extends React.Component<IProps> {
   private formRef = React.createRef<HTMLFormElement>();
 
   public render() {
@@ -13,9 +15,9 @@ class TodoForm extends React.Component<IProps> {
         <h1>Create todo</h1>
         <form action="" onSubmit={this.submit} ref={this.formRef}>
           <label htmlFor="title">Title</label>
-          <input type="text" id="title" name="todo_title" />
+          <input type="text" id="title" name="todo_title" required={true} />
           <label htmlFor="text">Text</label>
-          <input type="text" id="text" name="todo_text" />
+          <input type="text" id="text" name="todo_text" required={true} />
           <span>Importance</span>
           <input type="range" min="0" max="5" name="todo_importance" />
           <button type="submit">create</button>
@@ -30,13 +32,14 @@ class TodoForm extends React.Component<IProps> {
 
     if (form) {
       const data = new FormData(form);
-      const title = data.get("todo_title");
-      const text = data.get("todo_text");
-      const importance = data.get("todo_importance");
+      const title = data.get("todo_title") as string;
+      const text = data.get("todo_text") as string;
+      const importance = data.get("todo_importance") as string;
+      const id = uuid();
 
-      this.props.sendTodo({ title, text, importance });
+      this.props.createTodo({ title, text, importance, id });
     }
   };
 }
 
-export default TodoForm;
+export default CreateForm;
