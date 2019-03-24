@@ -1,15 +1,16 @@
-import { createTypes } from "../actions/types";
+import { todoTypes } from "../actions/types";
 import { ITodo } from "../actions/interface";
 
-const { CREATE_TODO } = createTypes;
+const { CREATE_TODO, DELETE_TODO } = todoTypes;
 
 const initialState = {
   todos: []
 };
 
 interface IAction {
-  type: "CREATE_TODO" | null;
+  type: "CREATE_TODO" | "DELETE_TODO" | null;
   todo?: ITodo;
+  id?: string;
 }
 
 export default (state = initialState, action: IAction) => {
@@ -18,6 +19,11 @@ export default (state = initialState, action: IAction) => {
       return {
         ...state,
         todos: [action.todo, ...state.todos]
+      };
+    case DELETE_TODO:
+      return {
+        ...state,
+        todos: state.todos.filter((todo: ITodo) => todo.id !== action.id)
       };
     default:
       return state;

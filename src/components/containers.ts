@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 // actions
-import { createTodo } from "../actions/createActions";
+import { createTodo, deleteTodo } from "../actions/todoActions";
 
 // components
 import CreateForm from "./CreateForm/CreateForm";
@@ -14,7 +14,7 @@ export const Create = connect(
 
 export const List = connect(
   (state: any) => ({
-    todos: state.create.todos
+    todos: state.todo.todos
   }),
-  null
+  { deleteTodo }
 )(TodoList);
