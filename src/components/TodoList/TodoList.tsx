@@ -9,26 +9,15 @@ interface IProps {
   todos: ITodo[];
 }
 
-class TodoList extends React.Component<IProps> {
-  public render() {
-    const { todos, deleteTodo } = this.props;
-
-    return (
-      <section>
-        <h1>Toso list</h1>
-        {todos && todos.length
-          ? todos.map((todo, i) => (
-              <Todo
-                todo={todo}
-                index={i}
-                deleteTodo={deleteTodo}
-                key={`todo_${i}`}
-              />
-            ))
-          : null}
-      </section>
-    );
-  }
-}
+const TodoList = ({ todos, deleteTodo }: IProps) => (
+  <section>
+    <h1>Toso list</h1>
+    {todos && todos.length
+      ? todos.map((todo, i) => (
+          <Todo todo={todo} deleteTodo={deleteTodo} key={`todo_${i}`} />
+        ))
+      : null}
+  </section>
+);
 
 export default TodoList;
