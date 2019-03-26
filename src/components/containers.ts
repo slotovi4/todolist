@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { compose } from 'redux';
 
 // actions
 import { createTodo, editTodo } from '../actions/todoActions';
@@ -11,9 +13,12 @@ import Home from './Home/Home';
 import PageHOC from './PageHOC/PageHOC';
 
 // connect
-export const Create = connect(
-  null,
-  { createTodo }
+export const Create = compose(
+  withRouter,
+  connect(
+    null,
+    { createTodo }
+  )
 )(CreateForm);
 
 export const Edit = connect(

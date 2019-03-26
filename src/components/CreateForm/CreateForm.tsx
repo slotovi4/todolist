@@ -31,7 +31,7 @@ class CreateForm extends React.Component<IProps> {
   private submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = this.formRef.current;
-    const { createTodo, history } = this.props;
+    const { createTodo } = this.props;
 
     if (form) {
       const data = new FormData(form);
@@ -41,7 +41,7 @@ class CreateForm extends React.Component<IProps> {
       const id = uuid();
 
       createTodo({ title, text, importance, id });
-      history.push('/');
+      this.props.history.push('/');
     }
   };
 }

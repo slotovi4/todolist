@@ -10,7 +10,7 @@ interface IProps {
 
 const TodoList = ({ todos }: IProps) => (
   <section>
-    <h1>Toso list</h1>
+    <h1>Todo list</h1>
     {todos && todos.length
       ? todos.map((todo, i) => <ListCell todo={todo} key={`todo_${i}`} />)
       : null}
