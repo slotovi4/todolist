@@ -4,25 +4,27 @@ import { History } from 'history';
 
 interface IProps {
   todos: ITodo[];
-  id: string;
+  match: any;
   history: History;
   editTodo: (todo: ITodo) => void;
 }
 
 class EditForm extends React.Component<IProps> {
   public state = {
-    todo: { title: '', text: '', importance: '0' }
+    todo: { title: '', text: '', importance: '0' },
+    id: ''
   };
 
   public formRef = React.createRef<HTMLFormElement>();
 
   public componentWillMount() {
-    const { todos, id } = this.props;
+    const { todos, match } = this.props;
+    const id = match.params.id;
 
     const todo = todos.find(el => el.id === id);
 
     if (todo) {
-      this.setState({ todo });
+      this.setState({ todo, id });
     }
   }
 
@@ -66,7 +68,8 @@ class EditForm extends React.Component<IProps> {
   private submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = this.formRef.current;
-    const { editTodo, id, history } = this.props;
+    const { editTodo, history } = this.props;
+    const { id } = this.state;
 
     if (form) {
       const data = new FormData(form);

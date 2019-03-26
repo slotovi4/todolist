@@ -22,11 +22,14 @@ export const Create = compose(
   )
 )(CreateForm);
 
-export const Edit = connect(
-  (state: any) => ({
-    todos: state.todo.todos
-  }),
-  { editTodo }
+export const Edit = compose(
+  withRouter,
+  connect(
+    (state: any) => ({
+      todos: state.todo.todos
+    }),
+    { editTodo }
+  )
 )(EditForm);
 
 export const List = connect((state: any) => ({

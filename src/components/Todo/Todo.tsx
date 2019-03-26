@@ -50,7 +50,7 @@ class Todo extends React.Component<IProps> {
           <span>{importance}</span>
         </header>
         <span>{text}</span>
-        <Link to={`/change/${id}`}>change</Link>
+        <Link to={`/edit/${id}`}>change</Link>
         <button onClick={() => deleteTodo(id)}>delete</button>
       </section>
     );
