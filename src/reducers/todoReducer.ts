@@ -1,7 +1,7 @@
 import { todoTypes } from "../actions/types";
 import { ITodo } from "../actions/interface";
 
-const { CREATE_TODO, DELETE_TODO } = todoTypes;
+const { CREATE_TODO, DELETE_TODO, EDIT_TODO } = todoTypes;
 
 const initialState = {
   todos: []
@@ -19,6 +19,13 @@ export default (state = initialState, action: IAction) => {
       return {
         ...state,
         todos: [action.todo, ...state.todos]
+      };
+    case EDIT_TODO:
+      return {
+        ...state,
+        todos: state.todos.map((todo: ITodo) =>
+          todo.id === action.id ? action.todo : todo
+        )
       };
     case DELETE_TODO:
       return {

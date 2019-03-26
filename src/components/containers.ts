@@ -1,15 +1,20 @@
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 // actions
-import { createTodo, deleteTodo } from "../actions/todoActions";
+import { createTodo, deleteTodo, editTodo } from '../actions/todoActions';
 
 // components
-import CreateForm from "./CreateForm/CreateForm";
-import TodoList from "./TodoList/TodoList";
+import CreateForm from './CreateForm/CreateForm';
+import TodoList from './TodoList/TodoList';
 
 export const Create = connect(
   null,
   { createTodo }
+)(CreateForm);
+
+export const Edit = connect(
+  null,
+  { editTodo }
 )(CreateForm);
 
 export const List = connect(

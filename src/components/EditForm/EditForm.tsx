@@ -1,20 +1,20 @@
 import * as React from 'react';
-import * as uuid from 'uuid';
 import { ITodo } from '../../actions/interface';
 import { History } from 'history';
 
 interface IProps {
-  createTodo: (todo: ITodo) => void;
+  editTodo: (todo: ITodo) => void;
+  id: string;
   history: History;
 }
 
-class CreateForm extends React.Component<IProps> {
+class EditForm extends React.Component<IProps> {
   private formRef = React.createRef<HTMLFormElement>();
 
   public render() {
     return (
       <section>
-        <h1>Create todo</h1>
+        <h1>Edit todo</h1>
         <form action='' onSubmit={this.submit} ref={this.formRef}>
           <label htmlFor='title'>Title</label>
           <input type='text' id='title' name='todo_title' required={true} />
@@ -22,7 +22,7 @@ class CreateForm extends React.Component<IProps> {
           <input type='text' id='text' name='todo_text' required={true} />
           <span>Importance</span>
           <input type='range' min='0' max='5' name='todo_importance' />
-          <button type='submit'>create</button>
+          <button type='submit'>save</button>
         </form>
       </section>
     );
@@ -31,19 +31,18 @@ class CreateForm extends React.Component<IProps> {
   private submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = this.formRef.current;
-    const { createTodo, history } = this.props;
+    const { editTodo, id, history } = this.props;
 
     if (form) {
       const data = new FormData(form);
       const title = data.get('todo_title') as string;
       const text = data.get('todo_text') as string;
       const importance = data.get('todo_importance') as string;
-      const id = uuid();
 
-      createTodo({ title, text, importance, id });
+      editTodo({ title, text, importance, id });
       history.push('/');
     }
   };
 }
 
-export default CreateForm;
+export default EditForm;
