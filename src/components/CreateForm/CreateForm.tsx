@@ -15,14 +15,14 @@ class CreateForm extends React.Component<IProps> {
     return (
       <section>
         <h1>Create todo</h1>
-        <form action='' onSubmit={this.submit} ref={this.formRef}>
-          <label htmlFor='title'>Title</label>
-          <input type='text' id='title' name='todo_title' required={true} />
-          <label htmlFor='text'>Text</label>
-          <input type='text' id='text' name='todo_text' required={true} />
+        <form action="" onSubmit={this.submit} ref={this.formRef}>
+          <label htmlFor="title">Title</label>
+          <input type="text" id="title" name="todo_title" required={true} />
+          <label htmlFor="text">Text</label>
+          <input type="text" id="text" name="todo_text" required={true} />
           <span>Importance</span>
-          <input type='range' min='0' max='5' name='todo_importance' />
-          <button type='submit'>create</button>
+          <input type="range" min="0" max="5" name="todo_importance" />
+          <button type="submit">create</button>
         </form>
       </section>
     );

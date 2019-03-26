@@ -6,8 +6,7 @@ import { Provider } from 'react-redux';
 import store from '../../store';
 
 // components
-import Home from '../Home/Home';
-import { Create, List, Edit } from '../containers';
+import { HomePage, CreatePage, EditPage } from '../containers';
 
 class App extends React.Component {
   public render() {
@@ -15,12 +14,11 @@ class App extends React.Component {
       <Provider store={store}>
         <Router>
           <Switch>
-            <Route exact={true} path='/' component={Home} />
-            <Route exact={true} path='/create' component={Create} />
-            <Route exact={true} path='/edit/:id' component={Edit} />
+            <Route exact={true} path="/" component={HomePage} />
+            <Route exact={true} path="/create" component={CreatePage} />
+            <Route exact={true} path="/edit/:id" component={EditPage} />
           </Switch>
         </Router>
-        <List />
       </Provider>
     );
   }
