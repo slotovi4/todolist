@@ -5,17 +5,14 @@ import { ITodo } from '../../actions/interface';
 import ListCell from '../ListCell/ListCell';
 
 interface IProps {
-  deleteTodo: (id: string) => void;
   todos: ITodo[];
 }
 
-const TodoList = ({ todos, deleteTodo }: IProps) => (
+const TodoList = ({ todos }: IProps) => (
   <section>
     <h1>Toso list</h1>
     {todos && todos.length
-      ? todos.map((todo, i) => (
-          <ListCell todo={todo} deleteTodo={deleteTodo} key={`todo_${i}`} />
-        ))
+      ? todos.map((todo, i) => <ListCell todo={todo} key={`todo_${i}`} />)
       : null}
   </section>
 );

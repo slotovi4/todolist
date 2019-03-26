@@ -3,11 +3,10 @@ import { ITodo } from '../../actions/interface';
 
 interface IProps {
   todo: ITodo;
-  deleteTodo: (id: string) => void;
 }
 
-const ListCell = ({ todo, deleteTodo }: IProps) => {
-  const { title, importance, text, id } = todo;
+const ListCell = ({ todo }: IProps) => {
+  const { title, importance } = todo;
 
   return (
     <article>
@@ -15,8 +14,6 @@ const ListCell = ({ todo, deleteTodo }: IProps) => {
         <h5>{title}</h5>
         <span>{importance}</span>
       </header>
-      <span>{text}</span>
-      <button onClick={() => deleteTodo(id)}>delete</button>
     </article>
   );
 };
