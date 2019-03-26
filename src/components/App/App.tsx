@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import store from '../../store';
 
 // components
-import { HomePage, CreatePage, EditPage } from '../containers';
+import { HomePage, CreatePage, EditPage, TodoPage } from '../containers';
 
 const App = () => (
   <Provider store={store}>
@@ -15,6 +15,7 @@ const App = () => (
         <Route exact={true} path="/" component={HomePage} />
         <Route exact={true} path="/create" component={CreatePage} />
         <Route exact={true} path="/edit/:id" component={EditPage} />
+        <Route exact={true} path="/todo/:id" component={TodoPage} />
       </Switch>
     </Router>
   </Provider>

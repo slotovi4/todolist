@@ -4,9 +4,9 @@ import { History } from 'history';
 
 interface IProps {
   todos: ITodo[];
-  editTodo: (todo: ITodo) => void;
   id: string;
   history: History;
+  editTodo: (todo: ITodo) => void;
 }
 
 class EditForm extends React.Component<IProps> {
@@ -19,9 +19,11 @@ class EditForm extends React.Component<IProps> {
   public componentWillMount() {
     const { todos, id } = this.props;
 
-    const todo = todos.filter(el => el.id === id);
+    const todo = todos.find(el => el.id === id);
 
-    this.setState({ todo });
+    if (todo) {
+      this.setState({ todo });
+    }
   }
 
   public render() {
@@ -30,32 +32,32 @@ class EditForm extends React.Component<IProps> {
     return (
       <section>
         <h1>Edit todo</h1>
-        <form action='' onSubmit={this.submit} ref={this.formRef}>
-          <label htmlFor='title'>Title</label>
+        <form action="" onSubmit={this.submit} ref={this.formRef}>
+          <label htmlFor="title">Title</label>
           <input
-            type='text'
-            id='title'
-            name='todo_title'
+            type="text"
+            id="title"
+            name="todo_title"
             required={true}
             defaultValue={title}
           />
-          <label htmlFor='text'>Text</label>
+          <label htmlFor="text">Text</label>
           <input
-            type='text'
-            id='text'
-            name='todo_text'
+            type="text"
+            id="text"
+            name="todo_text"
             required={true}
             defaultValue={text}
           />
           <span>Importance</span>
           <input
-            type='range'
-            min='0'
-            max='5'
-            name='todo_importance'
+            type="range"
+            min="0"
+            max="5"
+            name="todo_importance"
             defaultValue={importance}
           />
-          <button type='submit'>save</button>
+          <button type="submit">save</button>
         </form>
       </section>
     );
