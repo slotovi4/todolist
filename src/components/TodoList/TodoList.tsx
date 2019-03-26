@@ -1,5 +1,8 @@
-import * as React from "react";
-import { ITodo } from "../../actions/interface";
+import * as React from 'react';
+import { ITodo } from '../../actions/interface';
+
+// components
+import Todo from '../Todo/Todo';
 
 interface IProps {
   deleteTodo: (id: string) => void;
@@ -8,23 +11,19 @@ interface IProps {
 
 class TodoList extends React.Component<IProps> {
   public render() {
-    const { todos } = this.props;
+    const { todos, deleteTodo } = this.props;
 
     return (
       <section>
         <h1>Toso list</h1>
         {todos && todos.length
-          ? todos.map(({ title, text, importance, id }, index) => (
-              <article key={`todo_${index}`}>
-                <header>
-                  <h5>{title}</h5>
-                  <span>{importance}</span>
-                </header>
-                <span>{text}</span>
-                <button onClick={() => this.props.deleteTodo(id)}>
-                  delete
-                </button>
-              </article>
+          ? todos.map((todo, i) => (
+              <Todo
+                todo={todo}
+                index={i}
+                deleteTodo={deleteTodo}
+                key={`todo_${i}`}
+              />
             ))
           : null}
       </section>

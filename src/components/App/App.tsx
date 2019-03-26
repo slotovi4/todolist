@@ -20,7 +20,11 @@ class App extends React.Component {
             <Route exact={true} path='/edit/:id' component={Edit} />
           </Switch>
         </Router>
-        <List />
+        <Router>
+          <Switch>
+            <List />
+          </Switch>
+        </Router>
       </Provider>
     );
   }
