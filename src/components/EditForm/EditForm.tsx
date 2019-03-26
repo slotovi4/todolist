@@ -3,25 +3,58 @@ import { ITodo } from '../../actions/interface';
 import { History } from 'history';
 
 interface IProps {
+  todos: ITodo[];
   editTodo: (todo: ITodo) => void;
   id: string;
   history: History;
 }
 
 class EditForm extends React.Component<IProps> {
-  private formRef = React.createRef<HTMLFormElement>();
+  public state = {
+    todo: { title: '', text: '', importance: '0' }
+  };
+
+  public formRef = React.createRef<HTMLFormElement>();
+
+  public componentWillMount() {
+    const { todos, id } = this.props;
+
+    const todo = todos.filter(el => el.id === id);
+
+    this.setState({ todo });
+  }
 
   public render() {
+    const { title, text, importance } = this.state.todo;
+
     return (
       <section>
         <h1>Edit todo</h1>
         <form action='' onSubmit={this.submit} ref={this.formRef}>
           <label htmlFor='title'>Title</label>
-          <input type='text' id='title' name='todo_title' required={true} />
+          <input
+            type='text'
+            id='title'
+            name='todo_title'
+            required={true}
+            defaultValue={title}
+          />
           <label htmlFor='text'>Text</label>
-          <input type='text' id='text' name='todo_text' required={true} />
+          <input
+            type='text'
+            id='text'
+            name='todo_text'
+            required={true}
+            defaultValue={text}
+          />
           <span>Importance</span>
-          <input type='range' min='0' max='5' name='todo_importance' />
+          <input
+            type='range'
+            min='0'
+            max='5'
+            name='todo_importance'
+            defaultValue={importance}
+          />
           <button type='submit'>save</button>
         </form>
       </section>

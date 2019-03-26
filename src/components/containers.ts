@@ -14,7 +14,9 @@ export const Create = connect(
 )(CreateForm);
 
 export const Edit = connect(
-  null,
+  (state: any) => ({
+    todos: state.todo.todos
+  }),
   { editTodo }
 )(EditForm);
 
