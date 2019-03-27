@@ -1,0 +1,51 @@
+.Todo {
+  width: 50%;
+
+  &-Header {
+    margin: 20px;
+    position: relative;
+  }
+
+  &-Title {
+    margin: 0;
+    text-align: center;
+  }
+
+  &-Importance {
+    position: absolute;
+    right: 20px;
+  }
+
+  &-Text {
+    padding: 0 20px;
+    width: 100%;
+    display: inline-block;
+  }
+
+  &-Footer {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  &-Button {
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    line-height: 14px;
+    text-decoration: none;
+    color: white;
+
+    &_type_edit {
+      background-color: #dbdbdb;
+    }
+
+    &_type_delete {
+      background-color: red;
+    }
+  }
+}

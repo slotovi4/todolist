@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { ITodo } from '../../actions/interface';
 import { Link } from 'react-router-dom';
+import { cn } from '@bem-react/classname';
+
+// styles
+import './Todo.scss';
 
 interface IProps {
   match: any;
@@ -42,17 +46,27 @@ class Todo extends React.Component<IProps> {
     const { deleteTodo } = this.props;
     const { id } = this.state;
     const { title, text, importance } = this.state.todo;
+    const todo = cn('Todo');
 
     return (
-      <section>
-        <header>
-          <h1>{title}</h1>
-          <span>{importance}</span>
+      <article className={todo()}>
+        <header className={todo('Header')}>
+          <h1 className={todo('Title')}>{title}</h1>
+          <span className={todo('Importance')}>{importance}</span>
         </header>
-        <span>{text}</span>
-        <Link to={`/edit/${id}`}>change</Link>
-        <button onClick={() => deleteTodo(id)}>delete</button>
-      </section>
+        <span className={todo('Text')}>{text}</span>
+        <footer className={todo('Footer')}>
+          <Link className={todo('Button', { type: 'edit' })} to={`/edit/${id}`}>
+            change
+          </Link>
+          <button
+            className={todo('Button', { type: 'delete' })}
+            onClick={() => deleteTodo(id)}
+          >
+            delete
+          </button>
+        </footer>
+      </article>
     );
   }
 }
