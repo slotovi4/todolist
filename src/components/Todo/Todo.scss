@@ -2,6 +2,9 @@
   &-Header {
     margin: 20px;
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   &-Title {
@@ -9,9 +12,40 @@
     text-align: center;
   }
 
+  &-ImportanceBlock {
+    height: 20px;
+  }
+
   &-Importance {
-    position: absolute;
-    right: 20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &_color_red {
+      background-color: rgb(255, 69, 58);
+    }
+
+    &_color_green {
+      background-color: rgb(50, 215, 75);
+    }
+
+    &_color_orange {
+      background-color: rgb(255, 159, 10);
+    }
+
+    &_color_purple {
+      background-color: rgb(191, 90, 242);
+    }
+
+    &_color_black {
+      background-color: rgb(20, 20, 20);
+    }
   }
 
   &-Text {
@@ -28,22 +62,35 @@
   }
 
   &-Button {
-    padding: 10px;
+    transition: all 0.3s ease-out;
+    border: none;
+    outline: none;
+    padding: 15px 30px;
     border-radius: 4px;
     cursor: pointer;
-    outline: none;
-    border: none;
-    font-size: 14px;
-    line-height: 14px;
-    text-decoration: none;
+    text-transform: uppercase;
     color: white;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    font: 400 11px system-ui;
 
     &_type_edit {
-      background-color: #dbdbdb;
+      background-color: #7f8ff4;
+
+      &:hover {
+        background-color: #6c7ff2;
+        box-shadow: 0 0 10px 2px rgba(#6c7ff2, 0.5);
+      }
     }
 
     &_type_delete {
-      background-color: red;
+      background-color: rgb(255, 91, 82);
+
+      &:hover {
+        background-color: rgb(255, 59, 48);
+        box-shadow: 0 0 10px 2px rgba(255, 59, 48, 0.5);
+      }
     }
   }
 }

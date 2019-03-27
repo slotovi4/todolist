@@ -69,7 +69,15 @@ class Todo extends React.Component<IProps, IState> {
       <article className={todo()}>
         <header className={todo('Header')}>
           <h1 className={todo('Title')}>{title}</h1>
-          <span className={todo('Importance')}>{importance}</span>
+          <div className={todo('ImportanceBlock')}>
+            {importance &&
+              importance.map((color, i) => (
+                <div
+                  className={todo('Importance', { color })}
+                  key={`todo-color_${i}`}
+                />
+              ))}
+          </div>
         </header>
         <span className={todo('Text')}>{text}</span>
         <footer className={todo('Footer')}>
