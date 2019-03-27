@@ -40,19 +40,31 @@ class CreateForm extends React.Component<IProps, IState> {
             />
           ))}
         <form action="" onSubmit={this.submit}>
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            id="title"
-            required={true}
-            onChange={e => this.setState({ title: e.target.value.trim() })}
-          />
-          <label htmlFor="text">Text</label>
-          <textarea
-            id="text"
-            required={true}
-            onChange={e => this.setState({ text: e.target.value.trim() })}
-          />
+          <div className={create('Group')}>
+            <input
+              className={create('Field')}
+              type="text"
+              id="title"
+              required={true}
+              onChange={e => this.setState({ title: e.target.value.trim() })}
+            />
+            <label className={create('Label')} htmlFor="title">
+              Title
+            </label>
+          </div>
+          <div className={create('Group')}>
+            <textarea
+              className={create('Field')}
+              id="text"
+              rows={10}
+              required={true}
+              onChange={e => this.setState({ text: e.target.value.trim() })}
+            />
+            <label className={create('Label')} htmlFor="text">
+              Text
+            </label>
+          </div>
+
           <span>Importance</span>
           <div
             className={create('Importance', { color: 'red' })}

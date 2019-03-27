@@ -2,6 +2,45 @@
   &-Title {
   }
 
+  &-Group {
+    position: relative;
+    padding-top: 30px;
+  }
+
+  &-Label {
+    position: absolute;
+    font-size: 16px;
+    transition: all 0.3s ease-out;
+    display: inline-block;
+    height: 20px;
+    top: 40px;
+    left: 10px;
+  }
+
+  &-Field {
+    display: block;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    transition: all 0.3s ease-out;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 18px;
+    resize: none;
+
+    &:focus {
+      border-color: transparent;
+      box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+      outline: none;
+    }
+  }
+
+  &-Field:focus ~ &-Label,
+  &-Field:valid ~ &-Label {
+    top: 5px;
+    transform: scale(0.8);
+  }
+
   &-Importance {
     width: 20px;
     height: 20px;
