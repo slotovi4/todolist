@@ -75,26 +75,15 @@ class CreateForm extends React.Component<IProps, IState> {
             <span className={create('Text')}>Importance</span>
 
             <div className={create('ImportanceList')}>
-              <div
-                className={create('Importance', { color: 'red' })}
-                onClick={e => this.onImportance(e, 'red')}
-              />
-              <div
-                className={create('Importance', { color: 'green' })}
-                onClick={e => this.onImportance(e, 'green')}
-              />
-              <div
-                className={create('Importance', { color: 'orange' })}
-                onClick={e => this.onImportance(e, 'orange')}
-              />
-              <div
-                className={create('Importance', { color: 'purple' })}
-                onClick={e => this.onImportance(e, 'purple')}
-              />
-              <div
-                className={create('Importance', { color: 'black' })}
-                onClick={e => this.onImportance(e, 'black')}
-              />
+              {[...Array('red', 'green', 'orange', 'purple', 'black')].map(
+                (color, i) => (
+                  <div
+                    className={create('Importance', { color })}
+                    onClick={e => this.onImportance(e, color)}
+                    key={`create-color_${i}`}
+                  />
+                )
+              )}
             </div>
           </div>
 
