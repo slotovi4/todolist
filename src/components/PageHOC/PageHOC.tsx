@@ -8,7 +8,7 @@ import { List } from '../containers';
 import './PageHOC.scss';
 
 const PageHOC = (PassedComponent: any): JSX.Element => {
-  const page = cn('page');
+  const page = cn('Page');
 
   return (
     <div className={page()}>
