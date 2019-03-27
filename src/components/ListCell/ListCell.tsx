@@ -17,8 +17,19 @@ const ListCell = ({ todo }: IProps) => {
   return (
     <Link to={`/todo/${id}`}>
       <article className={cell()}>
-        <h5 className={cell('Title')}>{title}</h5>
-        <span className={cell('Importance')}>{importance}</span>
+        <h5 className={cell('Title')} title={title}>
+          {title}
+        </h5>
+        <div className={cell('ImportanceBlock')}>
+          {importance &&
+            importance.length &&
+            importance.map((color, i) => (
+              <div
+                className={cell('Importance', { color })}
+                key={`cell-color_${i}`}
+              />
+            ))}
+        </div>
       </article>
     </Link>
   );

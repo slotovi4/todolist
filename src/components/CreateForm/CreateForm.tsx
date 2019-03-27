@@ -51,7 +51,7 @@ class CreateForm extends React.Component<IProps, IState> {
               type="text"
               id="title"
               required={true}
-              maxLength={40}
+              maxLength={20}
               onChange={e => this.setState({ title: e.target.value.trim() })}
             />
             <label className={create('Label')} htmlFor="title">
