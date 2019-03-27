@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ITodo } from '../../actions/interface';
 import { Link } from 'react-router-dom';
 import { cn } from '@bem-react/classname';
+import { History } from 'history';
 
 // styles
 import './Todo.scss';
@@ -9,43 +10,58 @@ import './Todo.scss';
 interface IProps {
   match: any;
   todos: ITodo[];
+  history: History;
   deleteTodo: (id: string) => void;
 }
 
-class Todo extends React.Component<IProps> {
+interface IState {
+  todo: ITodo;
+}
+
+class Todo extends React.Component<IProps, IState> {
   public state = {
-    todo: { title: '', text: '', importance: '0' },
-    id: ''
+    todo: { title: '', text: '', importance: '0', id: '' }
   };
 
-  public componentWillReceiveProps(NextProps: IProps) {
-    const { id } = this.state;
-    const newId = NextProps.match.params.id;
+  public shouldComponentUpdate(nextProps: IProps, nextState: IState) {
+    const { id } = this.state.todo;
+
+    if (id !== nextState.todo.id) {
+      return true;
+    }
+
+    return false;
+  }
+
+  public componentWillReceiveProps(nextProps: IProps) {
+    const { id } = this.state.todo;
+    const newId = nextProps.match.params.id;
 
     if (newId !== id) {
-      const { todos } = NextProps;
+      const { todos } = nextProps;
       const todo = todos.find(el => el.id === newId);
 
       if (todo) {
-        this.setState({ todo, id: newId });
+        this.setState({ todo });
       }
     }
   }
 
   public componentWillMount() {
-    const { todos, match } = this.props;
-    const id = match.params.id;
+    const { todos, match, history } = this.props;
+    const { id } = match.params;
     const todo = todos.find(el => el.id === id);
 
     if (todo) {
-      this.setState({ todo, id });
+      this.setState({ todo });
+    } else {
+      history.push('/');
     }
   }
 
   public render() {
-    const { deleteTodo } = this.props;
-    const { id } = this.state;
-    const { title, text, importance } = this.state.todo;
+    const { deleteTodo, history } = this.props;
+    const { title, text, importance, id } = this.state.todo;
     const todo = cn('Todo');
 
     return (
@@ -61,7 +77,10 @@ class Todo extends React.Component<IProps> {
           </Link>
           <button
             className={todo('Button', { type: 'delete' })}
-            onClick={() => deleteTodo(id)}
+            onClick={() => {
+              deleteTodo(id);
+              history.push('/');
+            }}
           >
             delete
           </button>
