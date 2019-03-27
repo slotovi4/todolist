@@ -3,6 +3,7 @@ import { cn } from '@bem-react/classname';
 
 // components
 import { List } from '../containers';
+import Header from '../Header/Header';
 
 // styles
 import './PageHOC.scss';
@@ -12,8 +13,13 @@ const PageHOC = (PassedComponent: any): JSX.Element => {
 
   return (
     <div className={page()}>
-      <PassedComponent />
-      <List />
+      <div className={page('Section')}>
+        <Header />
+        <PassedComponent />
+      </div>
+      <div className={page('Section')}>
+        <List />
+      </div>
     </div>
   );
 };

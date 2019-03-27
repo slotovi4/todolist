@@ -1,0 +1,20 @@
+.Header {
+  padding: 40px 0;
+  border-bottom: 1px solid #dbdbdb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-Logo {
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  &-Login {
+    font-size: 16px;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+}

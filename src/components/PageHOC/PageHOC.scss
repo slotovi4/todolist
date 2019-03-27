@@ -3,4 +3,8 @@
   margin: 0 auto;
   display: flex;
   align-items: flex-start;
+
+  &-Section {
+    width: 50%;
+  }
 }
