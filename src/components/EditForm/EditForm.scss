@@ -84,6 +84,10 @@
       content: '−';
     }
 
+    &_disabled {
+      cursor: default;
+    }
+
     &_disabled::after {
       display: none;
     }
