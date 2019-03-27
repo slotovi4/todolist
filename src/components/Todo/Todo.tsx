@@ -50,6 +50,7 @@ class Todo extends React.Component<IProps, IState> {
   public componentWillMount() {
     const { todos, match, history } = this.props;
     const { id } = match.params;
+
     const todo = todos.find(el => el.id === id);
 
     if (todo) {

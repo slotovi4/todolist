@@ -9,22 +9,27 @@ interface IProps {
   editTodo: (todo: ITodo) => void;
 }
 
-class EditForm extends React.Component<IProps> {
+interface IState {
+  todo: ITodo;
+}
+
+class EditForm extends React.Component<IProps, IState> {
   public state = {
-    todo: { title: '', text: '', importance: '0' },
-    id: ''
+    todo: { title: '', text: '', importance: '0', id: '' }
   };
 
   public formRef = React.createRef<HTMLFormElement>();
 
   public componentWillMount() {
-    const { todos, match } = this.props;
-    const id = match.params.id;
+    const { todos, match, history } = this.props;
+    const { id } = match.params;
 
     const todo = todos.find(el => el.id === id);
 
     if (todo) {
-      this.setState({ todo, id });
+      this.setState({ todo });
+    } else {
+      history.push('/');
     }
   }
 
@@ -69,7 +74,7 @@ class EditForm extends React.Component<IProps> {
     e.preventDefault();
     const form = this.formRef.current;
     const { editTodo, history } = this.props;
-    const { id } = this.state;
+    const { id } = this.state.todo;
 
     if (form) {
       const data = new FormData(form);
