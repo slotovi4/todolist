@@ -20,7 +20,7 @@ interface IState {
 
 class Todo extends React.Component<IProps, IState> {
   public state = {
-    todo: { title: '', text: '', importance: '0', id: '' }
+    todo: { title: '', text: '', importance: [], id: '' }
   };
 
   public shouldComponentUpdate(nextProps: IProps, nextState: IState) {

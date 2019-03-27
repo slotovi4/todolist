@@ -1,6 +1,6 @@
 export interface ITodo {
   title: string;
   text: string;
-  importance: string;
+  importance: string[];
   id: string;
 }

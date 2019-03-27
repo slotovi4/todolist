@@ -15,10 +15,8 @@ interface IState {
 
 class EditForm extends React.Component<IProps, IState> {
   public state = {
-    todo: { title: '', text: '', importance: '0', id: '' }
+    todo: { title: '', text: '', importance: [], id: '' }
   };
-
-  public formRef = React.createRef<HTMLFormElement>();
 
   public componentWillMount() {
     const { todos, match, history } = this.props;
@@ -34,12 +32,12 @@ class EditForm extends React.Component<IProps, IState> {
   }
 
   public render() {
-    const { title, text, importance } = this.state.todo;
+    const { title, text } = this.state.todo;
 
     return (
       <section>
         <h1>Edit todo</h1>
-        <form action="" onSubmit={this.submit} ref={this.formRef}>
+        <form action="" onSubmit={this.submit}>
           <label htmlFor="title">Title</label>
           <input
             type="text"
@@ -57,13 +55,7 @@ class EditForm extends React.Component<IProps, IState> {
             defaultValue={text}
           />
           <span>Importance</span>
-          <input
-            type="range"
-            min="0"
-            max="5"
-            name="todo_importance"
-            defaultValue={importance}
-          />
+
           <button type="submit">save</button>
         </form>
       </section>
@@ -72,19 +64,11 @@ class EditForm extends React.Component<IProps, IState> {
 
   private submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = this.formRef.current;
     const { editTodo, history } = this.props;
-    const { id } = this.state.todo;
+    const { title, text, importance, id } = this.state.todo;
 
-    if (form) {
-      const data = new FormData(form);
-      const title = data.get('todo_title') as string;
-      const text = data.get('todo_text') as string;
-      const importance = data.get('todo_importance') as string;
-
-      editTodo({ title, text, importance, id });
-      history.push('/');
-    }
+    editTodo({ title, text, importance, id });
+    history.push('/');
   };
 }
 
