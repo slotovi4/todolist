@@ -13,7 +13,7 @@ const PageHOC = (PassedComponent: any): JSX.Element => {
 
   return (
     <div className={page()}>
-      <div className={page('Section')}>
+      <div className={page('Section', { right: true })}>
         <Header />
         <PassedComponent />
       </div>
