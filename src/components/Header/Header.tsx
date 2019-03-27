@@ -13,7 +13,7 @@ const Header = () => {
       <Link to="/" className={header('Logo')}>
         Todo
       </Link>
-      <span className={header('Login')}>Log In</span>
+      <button className={header('Login')}>Log In</button>
     </section>
   );
 };
