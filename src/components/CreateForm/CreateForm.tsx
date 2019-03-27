@@ -30,15 +30,20 @@ class CreateForm extends React.Component<IProps, IState> {
     const { importance } = this.state;
 
     return (
-      <section className={create()}>
-        <h1 className={create('Title')}>Create todo</h1>
-        {importance &&
-          importance.map((color, i) => (
-            <div
-              className={create('Importance', { color, disabled: true })}
-              key={`color_${i}`}
-            />
-          ))}
+      <article className={create()}>
+        <header className={create('Header')}>
+          <h1 className={create('Title')}>Create todo</h1>
+          <div className={create('TodoColors')}>
+            {importance &&
+              importance.map((color, i) => (
+                <div
+                  className={create('Importance', { color, disabled: true })}
+                  key={`color_${i}`}
+                />
+              ))}
+          </div>
+        </header>
+
         <form action="" onSubmit={this.submit}>
           <div className={create('Group')}>
             <input
@@ -46,6 +51,7 @@ class CreateForm extends React.Component<IProps, IState> {
               type="text"
               id="title"
               required={true}
+              maxLength={40}
               onChange={e => this.setState({ title: e.target.value.trim() })}
             />
             <label className={create('Label')} htmlFor="title">
@@ -65,30 +71,38 @@ class CreateForm extends React.Component<IProps, IState> {
             </label>
           </div>
 
-          <span>Importance</span>
-          <div
-            className={create('Importance', { color: 'red' })}
-            onClick={e => this.onImportance(e, 'red')}
-          />
-          <div
-            className={create('Importance', { color: 'green' })}
-            onClick={e => this.onImportance(e, 'green')}
-          />
-          <div
-            className={create('Importance', { color: 'orange' })}
-            onClick={e => this.onImportance(e, 'orange')}
-          />
-          <div
-            className={create('Importance', { color: 'purple' })}
-            onClick={e => this.onImportance(e, 'purple')}
-          />
-          <div
-            className={create('Importance', { color: 'black' })}
-            onClick={e => this.onImportance(e, 'black')}
-          />
-          <button type="submit">create</button>
+          <div className={create('ImportanceBlock')}>
+            <span className={create('Text')}>Importance</span>
+
+            <div className={create('ImportanceList')}>
+              <div
+                className={create('Importance', { color: 'red' })}
+                onClick={e => this.onImportance(e, 'red')}
+              />
+              <div
+                className={create('Importance', { color: 'green' })}
+                onClick={e => this.onImportance(e, 'green')}
+              />
+              <div
+                className={create('Importance', { color: 'orange' })}
+                onClick={e => this.onImportance(e, 'orange')}
+              />
+              <div
+                className={create('Importance', { color: 'purple' })}
+                onClick={e => this.onImportance(e, 'purple')}
+              />
+              <div
+                className={create('Importance', { color: 'black' })}
+                onClick={e => this.onImportance(e, 'black')}
+              />
+            </div>
+          </div>
+
+          <button className={create('Button')} type="submit">
+            create
+          </button>
         </form>
-      </section>
+      </article>
     );
   }
 

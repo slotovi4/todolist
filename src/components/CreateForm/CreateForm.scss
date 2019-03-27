@@ -1,5 +1,23 @@
 .CreateForm {
   &-Title {
+    margin: 0;
+  }
+
+  &-Text {
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  &-Header {
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  &-TodoColors {
+    height: 20px;
   }
 
   &-Group {
@@ -13,7 +31,7 @@
     transition: all 0.3s ease-out;
     display: inline-block;
     height: 20px;
-    top: 40px;
+    top: 42px;
     left: 10px;
   }
 
@@ -41,6 +59,36 @@
     transform: scale(0.8);
   }
 
+  &-ImportanceBlock {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  &-ImportanceList {
+  }
+
+  &-Button {
+    background-color: #7f8ff4;
+    transition: all 0.3s ease-out;
+    border: none;
+    outline: none;
+    padding: 15px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: auto;
+    margin-right: 0;
+    text-transform: uppercase;
+    color: white;
+    display: block;
+  }
+
+  &-Button:hover {
+    background-color: #6c7ff2;
+    box-shadow: 0 0 10px 2px rgba(#6c7ff2, 0.5);
+  }
+
   &-Importance {
     width: 20px;
     height: 20px;
@@ -49,6 +97,11 @@
     display: inline-block;
     transition: all 0.3s ease-out;
     position: relative;
+    margin-right: 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
 
     &:after {
       content: '+';
