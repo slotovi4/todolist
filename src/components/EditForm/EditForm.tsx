@@ -67,6 +67,7 @@ class EditForm extends React.Component<IProps, IState> {
             type="text"
             required={true}
             defaultValue={title}
+            maxLength={20}
             onChange={e => this.setState({ title: e.target.value.trim() })}
           />
           <textarea
