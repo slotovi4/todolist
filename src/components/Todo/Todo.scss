@@ -1,6 +1,8 @@
 .Todo {
+  padding: 0 20px;
+
   &-Header {
-    margin: 20px;
+    margin: 20px 0;
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -49,7 +51,6 @@
   }
 
   &-Text {
-    padding: 0 20px;
     width: 100%;
     display: inline-block;
   }
@@ -58,7 +59,7 @@
     margin-top: 40px;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
   }
 
   &-Button {
