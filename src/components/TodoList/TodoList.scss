@@ -1,3 +1,15 @@
 .TodoList {
-  border-left: 1px solid #dbdbdb;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: auto;
+
+  &-Empty {
+    height: 100px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &-Message {
+    margin: 0;
+    text-align: center;
+    line-height: 100px;
+  }
 }

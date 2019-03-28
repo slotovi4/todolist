@@ -21,14 +21,16 @@ const ListCell = ({ todo }: IProps) => {
           {title}
         </h5>
         <div className={cell('ImportanceBlock')}>
-          {importance &&
-            importance.length &&
+          {importance && importance.length ? (
             importance.map((color, i) => (
               <div
                 className={cell('Importance', { color })}
                 key={`cell-color_${i}`}
               />
-            ))}
+            ))
+          ) : (
+            <div className={cell('Icon')} />
+          )}
         </div>
       </article>
     </Link>

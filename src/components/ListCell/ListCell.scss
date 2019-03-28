@@ -1,8 +1,8 @@
 .ListCell {
   width: 50%;
   position: relative;
-  border-bottom: 1px solid #dbdbdb;
-  border-right: 1px solid #dbdbdb;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
   height: 100px;
   display: flex;
@@ -19,6 +19,18 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+
+  &-Icon {
+    position: absolute;
+    background-image: url('./ListCell-Icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 40px;
+    width: 40px;
+    top: 50%;
+    margin-top: -20px;
+    left: 20px;
   }
 
   &-ImportanceBlock {

@@ -17,9 +17,13 @@ const TodoList = ({ todos }: IProps) => {
 
   return (
     <section className={list()}>
-      {todos && todos.length
-        ? todos.map((todo, i) => <ListCell todo={todo} key={`todo_${i}`} />)
-        : null}
+      {todos && todos.length ? (
+        todos.map((todo, i) => <ListCell todo={todo} key={`todo_${i}`} />)
+      ) : (
+        <div className={list('Empty')}>
+          <h2 className={list('Message')}>Toto list is empty!</h2>
+        </div>
+      )}
     </section>
   );
 };
