@@ -37,6 +37,10 @@
     transform: translateX(-8px) translateY(-8px);
   }
 
+  &:last-child:nth-child(odd) {
+    width: 100%;
+  }
+
   &-Title {
     font-size: 16px;
     margin: 0;
