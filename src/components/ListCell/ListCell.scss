@@ -2,18 +2,44 @@
   width: 50%;
   position: relative;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
   height: 100px;
   display: flex;
   float: left;
   align-items: center;
   padding: 0 40px 0 110px;
+  transition: all 0.3s ease-out;
+  text-decoration: none;
+  z-index: 1;
+
+  &:nth-child(odd) {
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &:nth-child(even) {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &:hover {
+    border-color: transparent;
+    z-index: 10;
+    background-color: white;
+  }
+
+  &:nth-child(odd):hover {
+    box-shadow: -8px 8px 0px 0px #e7e7e7, 0 0 10px 2px #e7e7e7;
+    transform: translateX(8px) translateY(-8px);
+  }
+
+  &:nth-child(even):hover {
+    box-shadow: 8px 8px 0px 0px #e7e7e7, 0 0 10px 2px #e7e7e7;
+    transform: translateX(-8px) translateY(-8px);
+  }
 
   &-Title {
     font-size: 16px;
     margin: 0;
-    text-decoration: none;
     display: inline-block;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -15,24 +15,22 @@ const ListCell = ({ todo }: IProps) => {
   const cell = cn('ListCell');
 
   return (
-    <Link to={`/todo/${id}`}>
-      <article className={cell()}>
-        <h5 className={cell('Title')} title={title}>
-          {title}
-        </h5>
-        <div className={cell('ImportanceBlock')}>
-          {importance && importance.length ? (
-            importance.map((color, i) => (
-              <div
-                className={cell('Importance', { color })}
-                key={`cell-color_${i}`}
-              />
-            ))
-          ) : (
-            <div className={cell('Icon')} />
-          )}
-        </div>
-      </article>
+    <Link className={cell()} to={`/todo/${id}`}>
+      <h5 className={cell('Title')} title={title}>
+        {title}
+      </h5>
+      <div className={cell('ImportanceBlock')}>
+        {importance && importance.length ? (
+          importance.map((color, i) => (
+            <div
+              className={cell('Importance', { color })}
+              key={`cell-color_${i}`}
+            />
+          ))
+        ) : (
+          <div className={cell('Icon')} />
+        )}
+      </div>
     </Link>
   );
 };
