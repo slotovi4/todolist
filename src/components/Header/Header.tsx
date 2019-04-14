@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <section className={header()}>
-      <Link to="/" className={header('Logo')}>
+      <Link to='/' className={header('Logo')}>
         Todo
       </Link>
       <button className={header('Login')}>Log In</button>

@@ -1,9 +1,9 @@
-import { applyMiddleware, compose, createStore } from "redux";
-import thunk from "redux-thunk";
-import rootReducer from "./reducers";
+import { applyMiddleware, compose, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from './reducers';
 
-const initialState = localStorage["todo-store"]
-  ? JSON.parse(localStorage["todo-store"])
+const initialState = localStorage['todo-store']
+  ? JSON.parse(localStorage['todo-store'])
   : {};
 
 const middleware = [thunk];
@@ -19,7 +19,7 @@ const store = createStore(
 );
 
 store.subscribe(
-  () => (localStorage["todo-store"] = JSON.stringify(store.getState()))
+  () => (localStorage['todo-store'] = JSON.stringify(store.getState()))
 );
 
 export default store;

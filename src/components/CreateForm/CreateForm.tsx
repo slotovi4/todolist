@@ -44,29 +44,29 @@ class CreateForm extends React.Component<IProps, IState> {
           </div>
         </header>
 
-        <form action="" onSubmit={this.submit}>
+        <form action='' onSubmit={this.submit}>
           <div className={create('Group')}>
             <input
               className={create('Field')}
-              type="text"
-              id="title"
+              type='text'
+              id='title'
               required={true}
               maxLength={20}
               onChange={e => this.setState({ title: e.target.value.trim() })}
             />
-            <label className={create('Label')} htmlFor="title">
+            <label className={create('Label')} htmlFor='title'>
               Title
             </label>
           </div>
           <div className={create('Group')}>
             <textarea
               className={create('Field')}
-              id="text"
+              id='text'
               rows={10}
               required={true}
               onChange={e => this.setState({ text: e.target.value.trim() })}
             />
-            <label className={create('Label')} htmlFor="text">
+            <label className={create('Label')} htmlFor='text'>
               Text
             </label>
           </div>
@@ -87,7 +87,7 @@ class CreateForm extends React.Component<IProps, IState> {
             </div>
           </div>
 
-          <button className={create('Button')} type="submit">
+          <button className={create('Button')} type='submit'>
             create
           </button>
         </form>

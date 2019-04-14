@@ -1,5 +1,5 @@
-import { todoTypes } from "../actions/types";
-import { ITodo } from "../actions/interface";
+import { todoTypes } from '../actions/types';
+import { ITodo } from '../actions/interface';
 
 const { CREATE_TODO, DELETE_TODO, EDIT_TODO } = todoTypes;
 
@@ -8,7 +8,7 @@ const initialState = {
 };
 
 interface IAction {
-  type: "CREATE_TODO" | "DELETE_TODO" | null;
+  type: 'CREATE_TODO' | 'DELETE_TODO' | null;
   todo?: ITodo;
   id?: string;
 }

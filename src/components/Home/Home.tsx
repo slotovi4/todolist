@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <section className={home()}>
       <h1 className={home('Title')}>Get started with TODO</h1>
-      <Link className={home('Button')} to="/create">
+      <Link className={home('Button')} to='/create'>
         create
       </Link>
     </section>

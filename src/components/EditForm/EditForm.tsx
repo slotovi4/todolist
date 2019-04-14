@@ -61,10 +61,10 @@ class EditForm extends React.Component<IProps, IState> {
           </div>
         </header>
 
-        <form action="" onSubmit={this.submit}>
+        <form action='' onSubmit={this.submit}>
           <input
             className={edit('Field')}
-            type="text"
+            type='text'
             required={true}
             defaultValue={title}
             maxLength={20}
@@ -96,7 +96,7 @@ class EditForm extends React.Component<IProps, IState> {
             </div>
           </div>
 
-          <button className={edit('Button')} type="submit">
+          <button className={edit('Button')} type='submit'>
             save
           </button>
         </form>

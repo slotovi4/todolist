@@ -12,10 +12,10 @@ const App = () => (
   <Provider store={store}>
     <Router>
       <Switch>
-        <Route exact={true} path="/" component={HomePage} />
-        <Route exact={true} path="/create" component={CreatePage} />
-        <Route exact={true} path="/edit/:id" component={EditPage} />
-        <Route exact={true} path="/todo/:id" component={TodoPage} />
+        <Route exact={true} path='/' component={HomePage} />
+        <Route exact={true} path='/create' component={CreatePage} />
+        <Route exact={true} path='/edit/:id' component={EditPage} />
+        <Route exact={true} path='/todo/:id' component={TodoPage} />
       </Switch>
     </Router>
   </Provider>
